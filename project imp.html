@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manish Shukla - MCA | Software Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&family=Orbitron:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f120a, #1a1f3a);
+      color: #fff;
+      scroll-behavior: smooth;
+      text-align: center;
+      min-height: 25vh;
+      transition: background 0.5s, color 0.5s;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.85);
+      padding: 15px 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      font-weight: 800;
+      align-items: center;
+    }
+    nav a {
+      color: #fff;
+      font-size: 18px;
+      transition: color 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    nav a:hover, nav a.active {
+      color: #FF6B6B;
+      border-bottom: 2px solid #FF6B6B;
+      padding-bottom: 3px;
+    }
+    #modeToggle {
+      background: transparent;
+      border: none;
+      color: #FFD166;
+      font-size: 18px;
+      cursor: pointer;
+      margin-left: 15px;
+      transition: color 0.3s;
+    }
+    #modeToggle:hover {
+      color: #FF6B6B;
+    }
+    
+    /* Header */
+    header {
+      height: 36vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 60px;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
+      background-attachment: fixed;
+      position: relative;
+      padding: 0 15px;
+      text-align: center;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 0;
+      transition: background 0.5s;
+    }
+    .letters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      font-size: 64px;
+      font-weight: 1000;
+      background: linear-gradient(90deg, #FF6B6B, #FFD166, #6BCB77, #4D96FF, #FF7AC7);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 8s ease infinite;
+      cursor: default;
+      position: relative;
+      z-index: 1;
+    }
+    .letters span {
+      transition: transform 0.2s, text-shadow 0.2s;
+    }
+    .letters span:hover {
+      transform: scale(1.4) rotate(-10deg);
+      text-shadow: 0 0 15px #FFD166, 0 0 30px #FF6B6B;
+    }
+    @keyframes gradientShift {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    header h2 {
+      font-size: 28px;
+      color: #FFD166;
+      margin-top: 12px;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+    /* Typed Text */
+    #typed-text {
+      font-size: 28px;
+      font-weight: 700;
+      color: #FFD166;
+      margin-top: 5px;
+      min-height: 35px;
+      font-family: monospace;
+      white-space: nowrap;
+      border-right: 3px solid #FFD166;
+      animation: blink-caret 0.75s step-end infinite;
+      z-index: 1;
+      position: relative;
+    }
+    @keyframes blink-caret {
+      50% { border-color: transparent; }
+    }
+    /* Scrolling multicolor mobile number under name */
+    .scrolling-number {
+      font-size: 36px;
+      font-weight: 100;
+      margin-top: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(90deg, #FF6B6B, #FFD166, #6BCB77, #4D96FF, #FF7AC7);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: scrollText 8s linear infinite, gradientShift 6s ease infinite;
+      z-index: 1;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .clock {
+      font-size: 35px;
+      font-weight: 35;
+      margin: 10px 0 10px;
+      text-shadow: 0 0 20px #4D96FF;
+      position: relative;
+      z-index: 1;
+      font-family: 'Orbitron', monospace;
+    }
+    /* Multicolor animated Jai Mata Di */
+    .jai-mata-di {
+      font-size: 24px;
+      font-weight: 50;
+      background: linear-gradient(90deg, #FF0000, #FFD700, #008000);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 6s ease infinite;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+      margin: 0;
+    }
+    /* Special Hello Manish */
+    .hello-manish {
+      font-family: 'Pacifico', cursive;
+      color: #FFD700;
+      font-size: 8px;
+      margin: 20px 0;
+    }
+    .greeting {
+      margin-bottom: 0;
+      text-shadow: 0 0 10px #FFD166;
+      position: relative;
+      z-index: 1;
+      font-weight: 00;
+      font-size: 28px;
+      color: #FFD166;
+    }
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 60px auto 80px;
+      padding: 0 20px;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    section h3 {
+      font-size: 32px;
+      margin-bottom: 25px;
+      color: #4D96FF;
+      font-weight: 700;
+      text-align: center;
+    }
+    section p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #e0e0e0;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    /* Skills */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .skills span {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 25px;
+      background: #FF6B6B;
+      color: white;
+      font-weight: 700;
+      cursor: default;
+      user-select: none;
+      transition: transform 0.3s, background 0.3s, color 0.3s;
+    }
+    .skills span:hover {
+      transform: scale(1.15);
+      background: #FFD166;
+      color: #000;
+    }
+    
+    /* Interactive Skill Bars */
+    .skill-bar {
+      margin: 15px auto;
+      max-width: 400px;
+      text-align: left;
+      font-weight: 700;
+      color: #FFD166;
+    }
+    .skill-bar span {
+      display: block;
+      margin-bottom: 6px;
+    }
+    .bar {
+      width: 100%;
+      background: #222;
+      border-radius: 12px;
+      height: 18px;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      border-radius: 12px;
+      width: 0;
+      background: #FF6B6B;
+      transition: width 2s ease-in-out;
+    }
+    .progress.html { width: 90%; }
+    .progress.css { width: 85%; }
+    .progress.javascript { width: 80%; }
+    .progress.react { width: 75%; }
+    .progress.python { width: 70%; }
+    .progress.node { width: 65%; }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .project-card {
+      background: #1a1f3a;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(77, 150, 255, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .project-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 0 30px rgba(77, 150, 255, 0.7);
+    }
+    .project-card.active {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .project-card h4 {
+      color: #FF6B6B;
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 22px;
+    }
+    .project-card p {
+      color: #ddd;
+      font-size: 16px;
+    }
+    /* Social Buttons Section with heading */
+    .social-buttons {
+      margin: 30px 0 40px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .social-buttons h3 {
+      color: #FFD166;
+      margin-bottom: 18px;
+    }
+    .social-buttons a {
+      display: inline-block;
+      margin: 0 12px;
+      padding: 12px 25px;
+      font-size: 18px;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+      user-select: none;
+    }
+    .social-buttons i {
+      margin-right: 8px;
+    }
+    .facebook { background: #1877f2; }
+    .facebook:hover { background: #0d65d9; }
+    .whatsapp { background: #25D366; }
+    .whatsapp:hover { background: #1ebe5c; }
+    .google { background: #db4437; }
+    .google:hover { background: #c23321; }
+    .gmail { background: #ea4335; }
+    .gmail:hover { background: #cc3326; }
+    /* Contact Section */
+    #contact {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 500px;
+      margin: 0 auto 80px;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    #contact h3 {
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #4D96FF;
+    }
+    #contact p {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    #contact a {
+      color: #FFD166;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+    #contact a:hover {
+      color: #FF6B6B;
+    }
+    .mobile-number {
+      font-family: 'Orbitron', monospace;
+      font-size: 42px;
+      color: #00FF00;
+      text-shadow: 0 0 8px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00;
+      margin: 20px 0 30px;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s, text-shadow 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+    /* Form */
+    form {
+      text-align: left;
+      max-width: 400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #00ffcc;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      border: none;
+      background: #111;
+      color: #fff;
+      font-size: 16px;
+      box-shadow: 0 0 5px #00ffcc, 0 0 10px #0099ff;
+      transition: box-shadow 0.3s;
+    }
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffcc;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(45deg, #00ffcc, #0099ff, #ff00ff);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffcc;
+    }
+    /* Footer */
+    footer {
+      background: #0f120a;
+      padding: 30px 20px;
+      color: #fff;
+      border-top: 1px solid #4D96FF;
+      text-align: center;
+      font-size: 16px;
+      user-select: none;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-icons {
+      margin: 15px 0 5px;
+      font-size: 26px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    .footer-icons a {
+      color: #FFD166;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .footer-icons a:hover {
+      color: #FF6B6B;
+      transform: scale(1.3);
+    }
+
+    /* Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Floating Scroll To Top Button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #FF6B6B;
+      border: none;
+      border-radius: 50%;
+      padding: 15px;
+      cursor: pointer;
+      display: none;
+      z-index: 10000;
+      color: #fff;
+      font-size: 24px;
+      transition: background 0.3s;
+    }
+    #scrollTopBtn:hover {
+      background: #FFD166;
+      color: #000;
+    }
+
+    /* Light mode styles */
+    body.light-mode {
+      background: #f4f4f4;
+      color: #222;
+    }
+    body.light-mode nav {
+      background: rgba(255,255,255,0.9);
+    }
+    body.light-mode nav a {
+      color: #222;
+    }
+    body.light-mode nav a.active {
+      color: #FF6B6B;
+    }
+    body.light-mode header::after {
+      background: rgba(255,255,255,0.65);
+    }
+    body.light-mode header h2,
+    body.light-mode .letters span,
+    body.light-mode .scrolling-number,
+    body.light-mode #typed-text {
+      -webkit-text-fill-color: black;
+      color: black !important;
+    }
+    body.light-mode #contact,
+    body.light-mode .project-card,
+    body.light-mode .social-buttons,
+    body.light-mode form,
+    body.light-mode footer {
+      background: #fff;
+      color: #222;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    body.light-mode #contact a {
+      color: #FF6B6B;
+    }
+    body.light-mode #contact a:hover {
+      color: #FF4500;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav role="navigation" aria-label="Primary Navigation">
+    <a href="#home" tabindex="0">🏠 Home</a>
+    <a href="#about" tabindex="0">👨‍💻 About</a>
+    <a href="#skills" tabindex="0">💡 Skills</a>
+    <a href="#projects" tabindex="0">🗂️ Projects</a>
+    <a href="#contact" tabindex="0">📞 Contact</a>
+    <button id="modeToggle" aria-label="Toggle Dark Light Mode">🌙</button>
+  </nav>
+
+  <!-- Header -->
+  <header id="home" role="banner">
+    <div class="letters" aria-label="Name Manish Shukla" tabindex="0" id="name"></div>
+    <div id="typed-text" aria-label="Typed Text Career"></div>
+    <h2>MCA | Software Engineer</h2>
+
+    <!-- Multicolor scrolling mobile number under name -->
+    <div class="scrolling-number" aria-label="Mobile Number Scroll">📱 +91 78008 88005, 7376724660</div>
+
+    <div class="clock" id="clock" aria-live="polite" aria-atomic="true">00:00:00</div>
+    
+    <p class="jai-mata-di" tabindex="0">Jai Mata Di 🙏</p>
+
+  </header>
+
+  <main class="container">
+
+    <!-- Social Buttons Section -->
+    <section class="social-buttons reveal" aria-label="Social Media Links">
+      <h3>🔗 Follow Me</h3>
+      <a href="https://www.facebook.com/" target="_blank" class="facebook" rel="noopener" tabindex="0" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i> Facebook
+      </a>
+      <a href="https://wa.me/919876543210" target="_blank" class="whatsapp" rel="noopener" tabindex="0" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="https://www.google.com" target="_blank" class="google" rel="noopener" tabindex="0" aria-label="Google">
+        <i class="fab fa-google"></i> Google
+      </a>
+      <a href="mailto:manishshukla@msn.com" class="gmail" tabindex="0" aria-label="Gmail Email">
+        <i class="fa fa-envelope"></i> Gmail
+      </a>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="reveal" tabindex="0" aria-label="About Me section">
+      <h3>👨‍💻 About Me</h3>
+      <p>
+        Hello! I am Manish Shukla, a passionate software engineer specializing in web development, front-end frameworks, and interactive UI/UX designs. I love creating modern, responsive, and engaging applications.
+      </p>
+    </section>
+
+    <!-- Special Hello Manish -->
+    <section aria-label="Special greeting" tabindex="0" class="reveal">
+      <p class="hello-manish">Hello Manish</p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="reveal" tabindex="0" aria-label="Skills section">
+      <h3>💡 Skills</h3>
+      <div class="skills" role="list" aria-label="List of skills">
+        <span role="listitem">HTML</span>
+        <span role="listitem">CSS</span>
+        <span role="listitem">JavaScript</span>
+        <span role="listitem">React</span>
+        <span role="listitem">Node.js</span>
+        <span role="listitem">Python</span>
+        <span role="listitem">Git</span>
+        <span role="listitem">SQL</span>
+      </div>
+      <div class="skill-bar" aria-label="HTML skill level">
+        <span>HTML</span>
+        <div class="bar"><div class="progress html"></div></div>
+      </div>
+      <div class="skill-bar" aria-label="CSS skill level">
+        <span>CSS</span>
+        <div class="bar"><div class="progress css"></div></div>
+      </div>
+      <div class="skill-bar" aria-label="JavaScript skill level">
+        <span>JavaScript</span>
+        <div class="bar"><div class="progress javascript"></div></div>
+      </div>
+      <div class="skill-bar" aria-label="React skill level">
+        <span>React</span>
+        <div class="bar"><div class="progress react"></div></div>
+      </div>
+      <div class="skill-bar" aria-label="Python skill level">
+        <span>Python</span>
+        <div class="bar"><div class="progress python"></div></div>
+      </div>
+      <div class="skill-bar" aria-label="Node.js skill level">
+        <span>Node.js</span>
+        <div class="bar"><div class="progress node"></div></div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="reveal" tabindex="0" aria-label="Projects section">
+      <h3>🗂️ Projects</h3>
+      <div class="projects">
+        <article class="project-card reveal" tabindex="0" aria-label="Project: Portfolio Website">
+          <h4>Portfolio Website</h4>
+          <p>Modern, responsive portfolio site with stunning animations.</p>
+        </article>
+        <article class="project-card reveal" tabindex="0" aria-label="Project: Todo App">
+          <h4>Todo App</h4>
+          <p>Task management app using React and localStorage.</p>
+        </article>
+        <article class="project-card reveal" tabindex="0" aria-label="Project: Weather App">
+          <h4>Weather App</h4>
+          <p>Real-time weather updates using OpenWeatherMap API.</p>
+        </article>
+        <article class="project-card reveal" tabindex="0" aria-label="Project: Chat App">
+          <h4>Chat App</h4>
+          <p>Real-time chat app built with Node.js and Socket.io.</p>
+        </article>
+        <article class="project-card reveal" tabindex="0" aria-label="Project: E-commerce Website">
+          <h4>E-commerce</h4>
+          <p>Full-stack e-commerce website with cart and payment gateway.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="reveal" tabindex="0" aria-label="Contact information and form">
+      <h3>📞 Contact</h3>
+      <p>Email: <a href="mailto:manishshukla@msn.com">manishshukla@msn.com</a></p>
+      <p>Phone: <a href="tel:+917800888005">+91-7800888005</a> / <a href="tel:+917376724660">+91-7376724660</a></p>
+      <p>Social: 
+        <a href="https://linkedin.com/in/manishshukla" target="_blank" rel="noopener">LinkedIn</a> | 
+        <a href="https://github.com/manishshukla" target="_blank" rel="noopener">GitHub</a>
+      </p>
+      <div class="mobile-number" id="mobileNumber" tabindex="0" aria-label="Mobile Number">
+        +91 78008 88005
+      </div>
+
+      <form id="registrationForm" novalidate aria-labelledby="formTitle" role="form">
+        <h4 id="formTitle" style="color:#00ffcc; margin-bottom: 20px;">Registration Form</h4>
+        <label for="nameInput">Name</label>
+        <input id="nameInput" type="text" placeholder="Enter your name" required aria-required="true" />
+        <label for="emailInput">Email</label>
+        <input id="emailInput" type="email" placeholder="Enter your email" required aria-required="true" />
+        <label for="phoneInput">Mobile Number</label>
+        <input id="phoneInput" type="tel" placeholder="Enter your mobile number" required aria-required="true" />
+        <label for="passwordInput">Password</label>
+        <input id="passwordInput" type="password" placeholder="Enter password" required aria-required="true" />
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>© 2025 Manish S Shukla | All rights reserved</p>
+    <div class="footer-icons" role="list" aria-label="Social media links">
+      <a href="https://linkedin.com/in/manishshukla" target="_blank" rel="noopener" role="listitem" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/manishshukla" target="_blank" rel="noopener" role="listitem" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:manishshukla@msn.com" role="listitem" title="Email"><i class="fa fa-envelope"></i></a>
+    </div>
+  </footer>
+
+  <!-- Floating Scroll to Top Button -->
+  <button id="scrollTopBtn" aria-label="Scroll to Top" title="Scroll to Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Animated letters in header name
+    const nameContainer = document.getElementById('name');
+    const nameText = "MANISH SHUKLA";
+    nameText.split('').forEach(letter => {
+      const span = document.createElement('span');
+      span.textContent = letter;
+      nameContainer.appendChild(span);
+    });
+
+    // Typed Text Animation
+    const typedText = document.getElementById('typed-text');
+    const careerTexts = ['MCA', 'Software Engineer', 'Web Developer', 'UI/UX Enthusiast'];
+    let typedIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function type() {
+      if (!deleting && charIndex <= careerTexts[typedIndex].length) {
+        typedText.textContent = careerTexts[typedIndex].substring(0, charIndex++);
+        setTimeout(type, 150);
+      } else if (deleting && charIndex >= 0) {
+        typedText.textContent = careerTexts[typedIndex].substring(0, charIndex--);
+        setTimeout(type, 100);
+      } else {
+        deleting = !deleting;
+        if (!deleting) typedIndex = (typedIndex + 1) % careerTexts.length;
+        setTimeout(type, 1000);
+      }
+    }
+    type();
+
+    // Digital Clock with AM/PM
+    function updateClock() {
+      const now = new Date();
+      let h = now.getHours();
+      let m = now.getMinutes().toString().padStart(2, '0');
+      let s = now.getSeconds().toString().padStart(2, '0');
+      let period = 'AM';
+
+      if (h >= 12) {
+        period = 'PM';
+        if (h > 12) h -= 12;
+      }
+      if (h === 0) h = 12;
+
+      document.getElementById('clock').textContent = `${h.toString().padStart(2, '0')}:${m}:${s} ${period}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Mobile number color toggle on click
+    const mobileNumber = document.getElementById('mobileNumber');
+    mobileNumber.addEventListener('click', () => {
+      const colors = ['#00FF00', '#FF4500', '#00FFFF', '#FFD700', '#FF6B6B'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      mobileNumber.style.color = randomColor;
+      mobileNumber.style.textShadow = `0 0 8px ${randomColor}, 0 0 20px ${randomColor}, 0 0 30px ${randomColor}`;
+    });
+
+    // Form Submission Handling (demo)
+    const form = document.getElementById('registrationForm');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Form submitted successfully!');
+      form.reset();
+    });
+
+    // Smooth Scroll and Nav Highlight
+    const navLinks = document.querySelectorAll('nav a');
+    window.addEventListener('scroll', () => {
+      let fromTop = window.scrollY + 80;
+      navLinks.forEach(link => {
+        const section = document.querySelector(link.hash);
+        if (
+          section &&
+          section.offsetTop <= fromTop &&
+          section.offsetTop + section.offsetHeight > fromTop
+        ) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    });
+
+    // Dark/Light Mode Toggle
+    const modeToggle = document.getElementById('modeToggle');
+    modeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      if(document.body.classList.contains('light-mode')) {
+        modeToggle.textContent = '☀️';
+      } else {
+        modeToggle.textContent = '🌙';
+      }
+    });
+
+    // Skill Bar Animation on Scroll
+    window.addEventListener('scroll', () => {
+      const skillBars = document.querySelectorAll('.progress');
+      const triggerBottom = window.innerHeight * 0.9;
+
+      skillBars.forEach(bar => {
+        const barTop = bar.getBoundingClientRect().top;
+        if(barTop < triggerBottom){
+          if(bar.classList.contains('html')) bar.style.width = '90%';
+          else if(bar.classList.contains('css')) bar.style.width = '85%';
+          else if(bar.classList.contains('javascript')) bar.style.width = '80%';
+          else if(bar.classList.contains('react')) bar.style.width = '75%';
+          else if(bar.classList.contains('python')) bar.style.width = '70%';
+          else if(bar.classList.contains('node')) bar.style.width = '65%';
+        }
+      });
+    });
+
+    // Scroll Reveal Animation
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+
+      for(let i = 0; i < reveals.length; i++){
+        const windowHeight = window.innerHeight;
+        const revealTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 150;
+
+        if(revealTop < windowHeight - revealPoint){
+          reveals[i].classList.add('active');
+        } else {
+          reveals[i].classList.remove('active');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // Floating Scroll to Top Button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 100) {
+        scrollTopBtn.style.display = 'block';
+      } else {
+        scrollTopBtn.style.display = 'none';
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  </script>
+</body>
+</html>
